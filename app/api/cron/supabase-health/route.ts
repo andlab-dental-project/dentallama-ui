@@ -101,7 +101,9 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    console.log(`[supabase-health] ok status=${result.status}`)
+    console.log(
+      `[supabase-health] ok status=${result.status} node=${process.version}`
+    )
     return NextResponse.json({
       ok: true,
       status: result.status,
