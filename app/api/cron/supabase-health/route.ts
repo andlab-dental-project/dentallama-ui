@@ -102,11 +102,13 @@ export async function GET(request: NextRequest) {
     }
 
     console.log(
-      `[supabase-health] ok status=${result.status} node=${process.version}`
+      `[supabase-health] ok status=${result.status} node=${process.version} bun=${process.versions.bun}`
     )
     return NextResponse.json({
       ok: true,
       status: result.status,
+      node: process.version,
+      bun: process.versions.bun ?? null,
       checkedAt: new Date().toISOString()
     })
   } catch (error) {
